@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoveDrop 💌</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Floating Hearts Background -->
+<div class="hearts-bg" id="heartsBg"></div>
+
+<!-- HEADER (navbar only — no LoveDrop title here) -->
+<header class="header">
+    <div class="logo">
+        <div class="logo-icon">
+            <img src="img/logo.png" alt="Logo">
+        </div>
+        <div class="logo-text">monthly project by mer & cj</div>
+    </div>
+</header>
+
+<!-- TITLE + LOVEMAIL BUTTON -->
+<div class="title-wrapper">
+    <h1 class="site-title">LoveDrop</h1>
+    <div id="lovemail-btn" class="lovemail-circle">
+        <span class="lovemail-icon">💌</span>
+    </div>
+</div>
+
+<!-- LOVEMAIL ENVELOPE OVERLAY -->
+<div id="lovemail-overlay" class="overlay">
+    <div class="envelope-wrapper">
+        <div class="envelope-flap"></div>
+        <div class="letter-container">
+            <div class="letter-content">
+                <p><strong>Welcome to Mer & CJ's Monthly Project!</strong></p>
+                <p><strong>⸜(｡˃ ᵕ ˂ )⸝♡</strong></p>
+                <p>This January, it's the Movie Checklist. Check the boxes for films you've watched, featuring international hits and Pinoy favorites.</p>
+                <p>Enjoy the marathon!</p>
+                <p class="signature">Love, Mer & CJ</p>
+                <button id="close-lovemail" class="btn-close-letter">Close</button>
+            </div>
+        </div>
+        <div class="envelope-body"></div>
+    </div>
+</div>
+
+<!-- SCREEN 1: Name Input -->
+<div class="screen active" id="screen-name">
+    <div class="container">
+        <div class="card">
+            <div style="font-size:60px; margin-bottom:20px;">🌹</div>
+            <h2>Welcome to LoveDrop</h2>
+            <p>This Valentine's Day, spread some love! <br>First, tell us — what's your name?</p>
+            <input type="text" class="name-input" id="nameInput" placeholder="Enter your name..." maxlength="30" autocomplete="off">
+            <button class="btn btn-primary" id="nameNextBtn">Continue 💖</button>
+        </div>
+    </div>
+</div>
+
+<!-- SCREEN 2: Choose Mode -->
+<div class="screen" id="screen-choice">
+    <div class="container">
+        <div class="card">
+            <div style="font-size:55px; margin-bottom:15px;">💝</div>
+            <h2>Hi, <span id="greetName" class="highlight"></span>!</h2>
+            <p>What would you like to do today?</p>
+            <div class="choice-grid">
+                <div class="choice-card" id="choiceReceive">
+                    <div class="choice-emoji">🎁</div>
+                    <h3>Receive a Gift</h3>
+                    <p>Get a surprise Valentine's gift just for you!</p>
+                </div>
+                <div class="choice-card" id="choiceSend">
+                    <div class="choice-emoji">💌</div>
+                    <h3>Send a Gift</h3>
+                    <p>Send love to someone special in your life!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SCREEN 3: RECEIVE -->
+<div class="screen" id="screen-receive">
+    <div class="container">
+        <a class="back-link" id="receiveBack">← Back</a>
+        <div class="card receive-reveal">
+            <h2>Your Valentine's Gift 🎀</h2>
+            <p>A special surprise just for you, <span id="receiveNameLabel" class="highlight-bold"></span>!</p>
+            <div class="gift-reveal-box" id="giftRevealBox">
+                <div class="confetti-burst" id="confettiBurst"></div>
+                <span class="gift-image" id="giftEmoji"></span>
+                <div class="gift-name" id="giftName"></div>
+                <div class="gift-message" id="giftMessage"></div>
+            </div>
+            <button class="btn btn-primary" id="anotherGiftBtn">🎲 Surprise Me Again!</button>
+            <button class="btn btn-secondary" id="openLetterBtn">💌 View Love Letter</button>
+        </div>
+    </div>
+</div>
+
+<!-- SCREEN 4: SEND -->
+<div class="screen" id="screen-send">
+    <div class="container">
+        <a class="back-link" id="sendBack">← Back</a>
+        <div class="card">
+            <h2>Send Some Love 💌</h2>
+            <p>Choose a gift to send, then fill in the details below.</p>
+            <div class="gifts-grid" id="giftsGrid"></div>
+            <div class="send-details" id="sendDetails">
+                <label>To (Recipient's Name)</label>
+                <input type="text" id="recipientName" placeholder="e.g. Maria, Juan..." maxlength="30">
+                <label>Add a personal note (optional)</label>
+                <textarea id="personalNote" placeholder="Write your message here..."></textarea>
+                <button class="btn btn-primary" id="sendGiftBtn">Send Gift 💖</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SCREEN 5: SENT SUCCESS -->
+<div class="screen" id="screen-sent">
+    <div class="container">
+        <div class="card">
+            <div class="success-screen">
+                <span class="success-icon">🎉</span>
+                <h2>Gift Sent!</h2>
+                <p style="margin-bottom:25px;">Your <strong id="sentGiftName" class="highlight-bold"></strong> has been sent to <strong id="sentToName" class="highlight-bold"></strong>. May it fill their heart with joy! 💖</p>
+                <div class="success-preview">
+                    <div class="success-preview-emoji" id="sentGiftEmoji"></div>
+                    <div class="success-preview-msg" id="sentPreviewMsg"></div>
+                </div>
+                <button class="btn btn-primary" id="sendAnotherBtn">Send Another 💌</button>
+                <button class="btn btn-secondary" id="goHomeBtn">🏠 Start Over</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- LOVE LETTER OVERLAY -->
+<div class="letter-overlay" id="letterOverlay">
+    <div class="letter-paper">
+        <button class="letter-close" id="letterClose">✕</button>
+        <div class="letter-emoji">💌</div>
+        <h3>A Love Letter</h3>
+        <p id="letterText"></p>
+        <p class="sig">— With all my love ❤️</p>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>NAVIGATION:</h3>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#works">Works</a></li>
+                <li><a href="january.html">Monthly Movie Checklist</a></li>
+                <li><a href="february.html">Valentine's Wishlist</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>CONTACT US:</h3>
+            <div class="contact-item">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="5" width="18" height="14" rx="2" stroke="white" stroke-width="2"/>
+                    <path d="M3 7L12 13L21 7" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <div>
+                    <a href="mailto:maryjean.pup@gmail.com">maryjean.pup@gmail.com</a>
+                    <a href="mailto:cjames2004x@gmail.com">cjames2004x@gmail.com</a>
+                </div>
+            </div>
+            <div class="contact-item">
+                <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                </svg>
+                <div>
+                    <a href="https://github.com/goingmeri" target="_blank">goingmeri</a>
+                    <a href="https://github.com/cjames20x" target="_blank">cjames20x</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>2026 © All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
